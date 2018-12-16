@@ -1,0 +1,209 @@
+.scenario_area input[type="text"],
+.scenario_area textarea {
+    width:90%;
+    outline: none;
+    border: 1px solid #aaa;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    font-size: 16px;
+    font-family: "Hiragino Maru Gothic ProN";
+}
+.scenario_area input[type="text"]:focus,
+.scenario_area textarea:focus {
+    box-shadow: 0 0 7px #1abc9c;
+    border: 1px solid #1abc9c;
+}
+
+.table_hedding1{
+  width: 40px;
+  text-align: left;
+  font-size: 15px;
+  font-family: 'Hiragino Maru Gothic ProN';
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+.table_hedding2{
+  width:65px;
+}
+
+.square_btn {
+    width: 546px;
+    height: 80px;
+    display: inline-block;
+    background-color: white;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #1abc9c;
+    border: solid 2px #1abc9c;
+    border-radius: 3px;
+    transition: .4s;
+    font-size: 15px;
+    font-family: "Hiragino Maru Gothic ProN";
+}
+
+::-webkit-input-placeholder {  color: #000;}
+:-moz-placeholder { color: #000; }
+
+.square_btn:hover {
+    background: #1abc9c;
+    color: white;
+}
+
+.form_area{
+    margin: 10px 727px 10px 30px;
+}
+
+.charanameInp{
+  vertical-align: top;
+  border:1px #1abc9c solid;
+  font-size: 15px;
+  font-family: 'Hiragino Maru Gothic ProN';
+}
+
+.select{
+    width: 125px;
+    height: 25px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-size: 16px;
+    font-family: "Hiragino Maru Gothic ProN";
+    border-radius: 0;
+    border: 1px #1abc9c double;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    vertical-align: middle;
+    color: inherit;
+    box-sizing: content-box;
+
+    padding-right:30px;
+    background-image:url(arrow_down.png);
+    background-repeat:no-repeat;
+    background-size:25px 25px;/*背景画像のサイズ*/
+    background-position:right center;
+    cursor:pointer;
+    vertical-align: top;
+}
+
+.addBtn {
+    width: 90%;
+    height: 27px;
+    border-radius: 3px;
+    display: inline-block;
+    background-color: white;
+    /*padding: 0.3em 1em;*/
+    text-decoration: none;
+    color: #1abc9c;
+    border: solid 2px #1abc9c;
+    transition: .4s;
+    vertical-align: top;
+}
+.addBtn:hover {
+    background: #1abc9c;
+    color: white;
+}
+
+.delBtn {
+    width: 90%;
+    height: 27px;
+    border-radius: 3px;
+    display: inline-block;
+    background-color: white;
+    /*padding: 0.3em 1em;*/
+    text-decoration: none;
+    color: #1abc9c;
+    border: solid 2px #1abc9c;
+    transition: .4s;
+    vertical-align: top;
+}
+.delBtn:hover {
+    background: #1abc9c;
+    color: white;
+}
+
+.tab{
+  overflow:hidden; margin: 0
+}
+
+.tab li{
+  border-top:solid 2px #aaa;
+  border-right:solid 2px #aaa;
+  border-left:solid 2px #aaa;
+  padding:5px 25px; float:left;
+  list-style: none;
+  margin: 0;
+  margin-right:1px;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  font-size: 16px;
+  font-family: "Hiragino Maru Gothic ProN";
+}
+
+.tab li.select{
+  border-top:solid 2px #1abc9c;
+  border-right:solid 2px #1abc9c;
+  border-left:solid 2px #1abc9c;
+  background-color: white;
+}
+
+.content li{
+  border:solid 2px #aaa;
+  padding:20px;
+  list-style: none;
+  font-size: 16px;
+  font-family: "Hiragino Maru Gothic ProN";
+}
+
+.content{
+  margin: 0
+}
+.hide {
+  display:none;
+}
+
+.is-hide{
+    display:none;
+}
+.loading{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background:rgba(0,0,0,.5);
+}
+.loading::before{
+    content:"";
+    display:block;
+    position:fixed;
+    left:50%;
+    top:50%;
+    width:50px;
+    height:50px;
+    border-radius:5px;
+    margin-top:-15px;
+    margin-left:-15px;
+    background:white;
+}
+.loading::after{
+    content:"";
+    display:block;
+    position:fixed;
+    left:50%;
+    top:50%;
+    width:32px;
+    height:32px;
+    border-radius:20px;
+    margin-top:-10px;
+    margin-left:-10px;
+    border:4px solid #1ABC9C;
+    border-right:4px solid white;
+    animation: rotate 1s infinite linear;
+}
+@keyframes rotate {
+    0%    { transform: rotate(0deg); }
+    100%  { transform: rotate(360deg); }
+}
