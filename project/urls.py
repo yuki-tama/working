@@ -13,20 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 from django.urls import path, include
 from django.contrib import admin
 
 urlpatterns = [
-<<<<<<< HEAD
     path('keijiban/', include('scriptInput.urls')),
     path('admin/', admin.site.urls),
-=======
-    path('admin/', admin.site.urls),
-    path('', include('form.urls')),
-    # path('form/', 'views.arrange_format'),
->>>>>>> origin/master
 ]
