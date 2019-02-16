@@ -2,6 +2,8 @@
 #
 # # Create your views here.
 
+# pull request test
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from keijiban.forms import KakikomiForm
