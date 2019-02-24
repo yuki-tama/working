@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def form(request):
-    return render(request, 'form/form.html', {})
+    d = {"your_name" : request.POST.get("your_name")}
+    return render(request, 'form/form.html', d)
 
 def arrange_format(req):    # AJAXに答える関数
     import json

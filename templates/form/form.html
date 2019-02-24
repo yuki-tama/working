@@ -4,63 +4,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>narratica</title>
-    <link rel="shortcut icon" href="{% static "form/icon.png"%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'form/style.css' %}">
 </head>
 <body>
-<div class="form_area" style="width:600px;">
-    <img src="{% static "form/narratica_logo.png"%}" width="200">
-    <!-- Write "onkeypress="analyze(false)" when you wanted to do asynchronous data transmitt -->
-    <p class="scenario_area">
-      <textarea id="comment" name="comment" cols="60" rows="19"></textarea>
-    <p/>
-    <table  frame="void" style="border:none" id="tbl">
-        <tr>
-            <th class="table_hedding1">登場人物の名前</th>
-            <th class="table_hedding1">役割</th>
-            <th class="table_hedding2"></th>
-            <th class="table_hedding2"></th>
-        </tr>
-        <tr>
-          <td>
-            <input class="charanameInp" type="text" id="txt1" name="txt1" size="30"></input>
-          </td>
-          <td>
-            <select class="select" id="select1" name="select1">
-              <option>主人公</option>
-              <option>協力者</option>
-              <option>依頼者</option>
-              <option>犠牲者</option>
-              <option>狂言回し</option>
-              <option>敵</option>
-              <option>ライバル</option>
-              <option>支援者</option>
-            </select>
-          </td>
-          <td>
-            <input class="addBtn" type="button" id="addBtn1" name="addBtn1" value="追加" onclick="appendRow(this)"></input>
-          </td>
-          <td>
-            <input class="delBtn" type="button" id="delBtn1" name="delBtn1" value="削除" onclick="deleteRow(this)"></input>
-          </td>
-        </tr>
-    </table>
-    <br/>
-    <input id="analyze" class="square_btn" type = "submit" value ="解析">
-    <div class="loading">
-        <div class="loading_icon"></div>
-    </div>
-</div>
-<!-- <div style="width: 40%; display: none;" id="divdiv">
-</div> -->
-<!-- <h3 align="center" style="display: none" id="graphtitle"></h3>
-<div id="graph_area" style="display: none"></div>
-<div id="tab-emotion"></div>
-<div id="hide-emotion"></div> -->
+  {% block body %}
+      <form action="" method="post">
+        {% csrf_token %}
+          <label>名前:<input type="text" size="20" name="your_name"></label>
+          <input type="submit" value="送信">
+      </form>
+      {% if your_name %}
+          {{ your_name }}さん、こんにちは。
+      {% endif %}
+  {% endblock %}
 </body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- <script src="Chart.min.js"></script> -->
-<script src="{% static "form/onclickevent.js"%}"></script>
-
 </html>
