@@ -1,6 +1,7 @@
-.scenario_area input[type="text"],
-.scenario_area textarea {
-    width:90%;
+/* .scenario_area input[type="text"], */
+.scenario_area {
+    width:100%;
+    height:50vh;
     outline: none;
     border: 1px solid #aaa;
     -webkit-transition: all .3s;
@@ -8,15 +9,15 @@
     font-size: 16px;
     font-family: "Hiragino Maru Gothic ProN";
 }
-.scenario_area input[type="text"]:focus,
-.scenario_area textarea:focus {
+/* .scenario_area input[type="text"]:focus, */
+.scenario_area:focus {
     box-shadow: 0 0 7px #1abc9c;
     border: 1px solid #1abc9c;
 }
 
-.table_hedding1{
-  width: 40px;
-  text-align: left;
+.table_hedding{
+  text-align:left;
+  width:33%;
   font-size: 15px;
   font-family: 'Hiragino Maru Gothic ProN';
   border-top-style: none;
@@ -24,12 +25,9 @@
   border-right-style: none;
   border-bottom-style: none;
 }
-.table_hedding2{
-  width:65px;
-}
 
 .square_btn {
-    width: 546px;
+    width: 33vw;
     height: 80px;
     display: inline-block;
     background-color: white;
@@ -56,6 +54,7 @@
 }
 
 .charanameInp{
+  width: 90%;
   vertical-align: top;
   border:1px #1abc9c solid;
   font-size: 15px;
@@ -63,7 +62,7 @@
 }
 
 .select{
-    width: 125px;
+    width: 80%;
     height: 25px;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -81,14 +80,14 @@
 
     padding-right:30px;
     background-image:url(arrow_down.png);
-    background-repeat:no-repeat;
+    background-reqpeat:no-repeat;
     background-size:25px 25px;/*背景画像のサイズ*/
     background-position:right center;
     cursor:pointer;
     vertical-align: top;
 }
 
-.addBtn {
+.btn {
     width: 90%;
     height: 27px;
     border-radius: 3px;
@@ -101,25 +100,7 @@
     transition: .4s;
     vertical-align: top;
 }
-.addBtn:hover {
-    background: #1abc9c;
-    color: white;
-}
-
-.delBtn {
-    width: 90%;
-    height: 27px;
-    border-radius: 3px;
-    display: inline-block;
-    background-color: white;
-    /*padding: 0.3em 1em;*/
-    text-decoration: none;
-    color: #1abc9c;
-    border: solid 2px #1abc9c;
-    transition: .4s;
-    vertical-align: top;
-}
-.delBtn:hover {
+.btn:hover {
     background: #1abc9c;
     color: white;
 }

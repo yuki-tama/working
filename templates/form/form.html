@@ -4,13 +4,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>narratica</title>
+    <link rel="shortcut icon" href="{% static "icon.png" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
 </head>
 <body>
   {% block body %}
-      <form action="" method="post">
+      <form action="" method="post" style="width:33vw;">
+        <img src="{% static "narratica_logo.png" %}" style="width:50%;">
+        <br/>
         {% csrf_token %}
-          <label>名前:<input type="text" size="20" name="your_name"></label>
-          <input type="submit" value="送信">
+          <textarea class="scenario_area" name="your_name" onkeypress="analyze(false)"></textarea>
+          <br/>
+          <table  frame="void" style="border:none; width:33vw;">
+              <tr>
+                  <th class="table_hedding">登場人物の名前</th>
+                  <th class="table_hedding">役割</th>
+                  <th style="width:33%;"> </th>
+              </tr>
+              <tr>
+                  <td>
+                    <input class="charanameInp" type="text" name="txt1" value="">
+                  </td>
+                  <td>
+                    <select class="select" name="select1">
+                        <option>主人公</option>
+                        <option>協力者</option>
+                        <option>依頼者</option
+                        <option>犠牲者</option>
+                        <option>狂言回し</option>
+                        <option>敵</option>
+                        <option>ライバル</option>
+                        <option>支援者</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input class="btn" type="button" id="delBtn1" value="Delete" onclick="deleteRow(this)">
+                  </td>
+              </tr>
+          </table>
+          <br/>
+          <input class="square_btn" type="submit" value="analyse">
       </form>
       {% if your_name %}
           {{ your_name }}さん、こんにちは。
