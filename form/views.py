@@ -2,7 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def form(request):
-    d = {"your_name" : request.POST.get("your_name")}
+    d = {
+        "scenario" : request.POST.get("scenario"),
+        "name1" : request.POST.get("name1"),
+        "role1" : request.POST.get("role1")
+    }
     return render(request, 'form/form.html', d)
 
 def arrange_format(req):    # AJAXに答える関数

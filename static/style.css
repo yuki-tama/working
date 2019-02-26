@@ -48,13 +48,13 @@
     background: #1abc9c;
     color: white;
 }
-
+/*
 .form_area{
     margin: 10px 727px 10px 30px;
-}
+} */
 
 .charanameInp{
-  width: 90%;
+  width: 100%;
   vertical-align: top;
   border:1px #1abc9c solid;
   font-size: 15px;
@@ -78,17 +78,19 @@
     color: inherit;
     box-sizing: content-box;
 
-    padding-right:30px;
+    padding-right:20px;
+    padding-left:10px;
+
     background-image:url(arrow_down.png);
-    background-reqpeat:no-repeat;
-    background-size:25px 25px;/*背景画像のサイズ*/
+    background-repeat: no-repeat;
+    background-size:25px 25px;
     background-position:right center;
     cursor:pointer;
     vertical-align: top;
 }
 
 .btn {
-    width: 90%;
+    width: 100%;
     height: 27px;
     border-radius: 3px;
     display: inline-block;

@@ -14,28 +14,28 @@
         <img src="{% static "narratica_logo.png" %}" style="width:50%;">
         <br/>
         {% csrf_token %}
-          <textarea class="scenario_area" name="your_name" onkeypress="analyze(false)"></textarea>
+          <textarea class="scenario_area" name="scenario" onkeypress="analyze(false)"></textarea>
           <br/>
-          <table  frame="void" style="border:none; width:33vw;">
+          <table  frame="void" style="border:none; width:33vw; text-align:right;">
               <tr>
-                  <th class="table_hedding">登場人物の名前</th>
-                  <th class="table_hedding">役割</th>
+                  <th class="table_hedding">Name of character</th>
+                  <th class="table_hedding">Role</th>
                   <th style="width:33%;"> </th>
               </tr>
               <tr>
                   <td>
-                    <input class="charanameInp" type="text" name="txt1" value="">
+                    <input class="charanameInp" type="text" name="name1" value="">
                   </td>
                   <td>
-                    <select class="select" name="select1">
-                        <option>主人公</option>
-                        <option>協力者</option>
-                        <option>依頼者</option
-                        <option>犠牲者</option>
-                        <option>狂言回し</option>
-                        <option>敵</option>
-                        <option>ライバル</option>
-                        <option>支援者</option>
+                    <select class="select" name="role1">
+                        <option>protagonist</option>
+                        <option>attractor</option>
+                        <option>client</option
+                        <option>victim</option>
+                        <option>trickster</option>
+                        <option>antagonist</option>
+                        <option>temper</option>
+                        <option>mentor</option>
                     </select>
                   </td>
                   <td>
@@ -46,8 +46,14 @@
           <br/>
           <input class="square_btn" type="submit" value="analyse">
       </form>
-      {% if your_name %}
-          {{ your_name }}さん、こんにちは。
+      {% if scenario %}
+          {{ scenario }}さん、こんにちは。
+      {% endif %}
+      {% if name1 %}
+          {{ name1 }}さん、こんにちは。
+      {% endif %}
+      {% if role1 %}
+          {{ role1 }}さん、こんにちは。
       {% endif %}
   {% endblock %}
 </body>
