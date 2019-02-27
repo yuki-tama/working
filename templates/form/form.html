@@ -5,18 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>narratica</title>
-    <link rel="shortcut icon" href="{% static "icon.png" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+    <link rel="shortcut icon" href="{% static "form/icon.png" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "form/style.css" %}">
+    <script type="text/javascript" src='{% static 'form/onclickevent.js' %}'></script>
 </head>
 <body>
   {% block body %}
       <form action="" method="post" style="width:33vw;">
-        <img src="{% static "narratica_logo.png" %}" style="width:50%;">
+        <img src="{% static "form/narratica_logo.png" %}" style="width:50%;">
         <br/>
         {% csrf_token %}
           <textarea class="scenario_area" name="scenario" onkeypress="analyze(false)"></textarea>
           <br/>
-          <table  frame="void" style="border:none; width:33vw; text-align:right;">
+          <table  frame="void" style="border:none; width:33vw; text-align:right;" name="tbl" id="tbl">
               <tr>
                   <th class="table_hedding">Name of character</th>
                   <th class="table_hedding">Role</th>
@@ -24,13 +25,13 @@
               </tr>
               <tr>
                   <td>
-                    <input class="charanameInp" type="text" name="name1" value="">
+                    <input class="name" type="text" name="name1" value="" id="name1">
                   </td>
                   <td>
-                    <select class="select" name="role1">
+                    <select class="role" name="role1" id="role1">
                         <option>protagonist</option>
                         <option>attractor</option>
-                        <option>client</option
+                        <option>client</option>
                         <option>victim</option>
                         <option>trickster</option>
                         <option>antagonist</option>
@@ -39,12 +40,12 @@
                     </select>
                   </td>
                   <td>
-                    <input class="btn" type="button" id="delBtn1" value="Delete" onclick="deleteRow(this)">
+                    <input class="appendBtn" type="button" value="append" id="appendBtn1" onclick="appendRow(this)">
                   </td>
               </tr>
           </table>
           <br/>
-          <input class="square_btn" type="submit" value="analyse">
+          <input class="submitbtn" type="submit" value="analyse">
       </form>
       {% if scenario %}
           {{ scenario }}さん、こんにちは。
