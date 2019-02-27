@@ -17,6 +17,8 @@
         {% csrf_token %}
           <textarea class="scenario_area" name="scenario" onkeypress="analyze(false)"></textarea>
           <br/>
+          {% block tbl %}
+
           <table  frame="void" style="border:none; width:33vw; text-align:right;" name="tbl" id="tbl">
               <tr>
                   <th class="table_hedding">Name of character</th>
@@ -44,6 +46,9 @@
                   </td>
               </tr>
           </table>
+
+          {% endblock %}
+
           <br/>
           <input class="submitbtn" type="submit" value="analyse">
       </form>
@@ -56,6 +61,7 @@
       {% if role1 %}
           {{ role1 }}さん、こんにちは。
       {% endif %}
+
   {% endblock %}
 </body>
 </html>
