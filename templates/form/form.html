@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,15 +53,34 @@
           <input class="submitbtn" type="submit" value="analyse">
       </form>
       {% if scenario %}
-          {{ scenario }}さん、こんにちは。
+          {{ scenario }}
       {% endif %}
       {% if name1 %}
-          {{ name1 }}さん、こんにちは。
+          {{ name1 }}
       {% endif %}
       {% if role1 %}
-          {{ role1 }}さん、こんにちは。
+          {{ role1 }}
       {% endif %}
 
   {% endblock %}
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>書き込みフォーム</title>
+</head>
+<body>
+<h1>掲示板 - 書き込みフォーム</h1>
+<form action="" method="post">
+{% csrf_token %}
+  <table>
+    {{form1.as_table}}
+    <tr><td colspan='2'><input type="submit" value="Submit"></td></tr>
+  </table>
+</form>
 </body>
 </html>
