@@ -1,6 +1,6 @@
 from django import forms
 
-class KakikomiForm(forms.Form):
+class InputScenario(forms.Form):
      name = forms.CharField()
      email = forms.EmailField()
-     body = forms.CharField() 
+     body = forms.CharField()

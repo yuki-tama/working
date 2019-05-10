@@ -1,86 +1,21 @@
-<!-- {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>narratica</title>
-    <link rel="shortcut icon" href="{% static "form/icon.png" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "form/style.css" %}">
-    <script type="text/javascript" src='{% static 'form/onclickevent.js' %}'></script>
-</head>
-<body>
-  {% block body %}
-      <form action="" method="post" style="width:33vw;">
-        <img src="{% static "form/narratica_logo.png" %}" style="width:50%;">
-        <br/>
-        {% csrf_token %}
-          <textarea class="scenario_area" name="scenario" onkeypress="analyze(false)"></textarea>
-          <br/>
-          {% block tbl %}
-
-          <table  frame="void" style="border:none; width:33vw; text-align:right;" name="tbl" id="tbl">
-              <tr>
-                  <th class="table_hedding">Name of character</th>
-                  <th class="table_hedding">Role</th>
-                  <th style="width:33%;"> </th>
-              </tr>
-              <tr>
-                  <td>
-                    <input class="name" type="text" name="name1" value="" id="name1">
-                  </td>
-                  <td>
-                    <select class="role" name="role1" id="role1">
-                        <option>protagonist</option>
-                        <option>attractor</option>
-                        <option>client</option>
-                        <option>victim</option>
-                        <option>trickster</option>
-                        <option>antagonist</option>
-                        <option>temper</option>
-                        <option>mentor</option>
-                    </select>
-                  </td>
-                  <td>
-                    <input class="appendBtn" type="button" value="append" id="appendBtn1" onclick="appendRow(this)">
-                  </td>
-              </tr>
-          </table>
-
-          {% endblock %}
-
-          <br/>
-          <input class="submitbtn" type="submit" value="analyse">
-      </form>
-      {% if scenario %}
-          {{ scenario }}
-      {% endif %}
-      {% if name1 %}
-          {{ name1 }}
-      {% endif %}
-      {% if role1 %}
-          {{ role1 }}
-      {% endif %}
-
-  {% endblock %}
-</body>
-</html> -->
+{% load static %}
 
 <!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-  <title>書き込みフォーム</title>
+  <title>narratica</title><link rel="shortcut icon" href="{% static "form/icon.png" %}">
 </head>
 <body>
-<h1>掲示板 - 書き込みフォーム</h1>
-<form action="" method="post">
-{% csrf_token %}
-  <table>
-    {{form1.as_table}}
-    <tr><td colspan='2'><input type="submit" value="Submit"></td></tr>
-  </table>
-</form>
+  <form action="" method="post" style="width:33vw;">
+    <img src="{% static "form/narratica_logo.png" %}" style="width:50%;">
+    <br/>
+    {% csrf_token %}
+    <table>
+      {{form1.as_table}}
+      <tr><td colspan='2'><input type="submit" value="Submit"></td></tr>
+    </table>
+  </form>
 </body>
 </html>
