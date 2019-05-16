@@ -5,17 +5,33 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-  <title>narratica</title><link rel="shortcut icon" href="{% static "form/icon.png" %}">
+  <title>narratica</title>
+  <link rel="shortcut icon" href="{% static "form/icon.png" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "form/style.css" %}">
 </head>
 <body>
-  <form action="" method="post" style="width:33vw;">
-    <img src="{% static "form/narratica_logo.png" %}" style="width:50%;">
-    <br/>
-    {% csrf_token %}
-    <table>
-      {{form1}}
-      <tr><td colspan='1'><input type="submit" value="Submit"></td></tr>
-    </table>
-  </form>
+  <div style="width:33vw">
+    <form action="" method="post" style="width:100%;">
+      <img src="{% static "form/narratica_logo.png" %}" style="width:50%;">
+      <br/>
+      {% csrf_token %}
+      {{form1.scenario}}
+      <table  frame="void" style="border:none; width:100%" id="tbl">
+            <tr>
+              <th class="table_hedding">Name of Character</th>
+              <th class="table_hedding">Role</th>
+              <th style="width:30%;"> </th>
+            </tr>
+            <tr>
+              <td>{{form1.characterName}}</td>
+              <td>{{form1.characterRole}}</td>
+              <td><input class="appendBtn" type="button" id="appendBtn" value="append" onclick="appendRow(this)"></td>
+            </tr>
+          </table>
+          <br/>
+          <input id="execute" class="submitbtn" type = "submit" value ="analyze">
+      </form>
+    </div>
 </body>
+<script src="{% static "form/onclickevent.js" %}"></script>
 </html>
