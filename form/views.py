@@ -10,4 +10,5 @@ def FetchInput(request):
     return render(
         request,
         'form/form.html',
-        {'form1': f} )
+        {'form1': f}
+    )

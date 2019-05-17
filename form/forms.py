@@ -12,5 +12,5 @@ ROLE_CHOICES = (
 
 class InputScenario(forms.Form):
      scenario = forms.CharField(widget=forms.Textarea(attrs={'class':'scenario_area'}))
-     characterName = forms.CharField(widget=forms.TextInput(attrs={'size':'30', 'class' : 'name', 'id':'name1'}))
-     characterRole = forms.ChoiceField(choices=ROLE_CHOICES, widget=forms.Select(attrs={'class':'role', 'id':'role1'}))
+     characterName = forms.CharField(widget=forms.TextInput(attrs={'size':'30', 'class' : 'characterName', 'id':'name1', 'name' : 'name1'}))
+     characterRole = forms.ChoiceField(choices=ROLE_CHOICES, widget=forms.Select(attrs={'class':'characterRole', 'id':'role1', 'name' : 'role1'}))

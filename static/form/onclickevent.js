@@ -12,7 +12,7 @@ function appendRow(appendBtn) {
 		chara_name.innerHTML = '{{form1.characterName}}';
 
 		const roleSelector = newrow.insertCell(1);
-		roleSelector.innerHTML = '{{form1.characterRole}}';
+		roleSelector.innerHTML = '{% spaceless %}{{form1.characterRole}}{% endspaceless %}';
 
 		const addBtn = newrow.insertCell(2);
 		addBtn.innerHTML = '<input class="appendBtn" type="button" value="append" onclick="appendRow(this)" id="appendBtn' + rownum +'" name="appendBtn' + rownum +'">';

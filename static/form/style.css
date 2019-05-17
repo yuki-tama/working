@@ -45,7 +45,7 @@
     color: white;
 }
 
-.name{
+.characterName{
   width: 95%;
   vertical-align: top;
   border:1px #1abc9c solid;
@@ -53,7 +53,7 @@
   font-family: 'Hiragino Maru Gothic ProN';
 }
 
-.role{
+.characterRole{
     width: 86%;
     height: 25px;
     -moz-appearance: none;
