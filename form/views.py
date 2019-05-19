@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from form.forms import InputScenario
 
-def form(request):
-    d = {
-        "scenario" : request.POST.get("scenario"),
-        "name1" : request.POST.get("name1"),
-        "role1" : request.POST.get("role1"),
-        # "tbl" : len(participations_table.rows)
-    }
-    return render(request, 'form/form.html', d)
+def FetchInput(request):
+    if request.method == 'POST':
+        f = InputScenario(request.POST)
+    else:
+        f = InputScenario()
+    return render(
+        request,
+        'form/form.html',
+        {'form1': f}
+    )

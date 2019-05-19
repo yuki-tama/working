@@ -1,67 +1,92 @@
 {% load static %}
-
+{% spaceless %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>narratica</title>
-    <link rel="shortcut icon" href="{% static "form/icon.png" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "form/style.css" %}">
-    <script type="text/javascript" src='{% static 'form/onclickevent.js' %}'></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>narratica</title>
+  <link rel="shortcut icon" href="{% static "form/icon.png" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "form/style.css" %}">
 </head>
 <body>
-  {% block body %}
-      <form action="" method="post" style="width:33vw;">
-        <img src="{% static "form/narratica_logo.png" %}" style="width:50%;">
-        <br/>
-        {% csrf_token %}
-          <textarea class="scenario_area" name="scenario" onkeypress="analyze(false)"></textarea>
-          <br/>
-          {% block tbl %}
-
-          <table  frame="void" style="border:none; width:33vw; text-align:right;" name="tbl" id="tbl">
-              <tr>
-                  <th class="table_hedding">Name of character</th>
-                  <th class="table_hedding">Role</th>
-                  <th style="width:33%;"> </th>
-              </tr>
-              <tr>
-                  <td>
-                    <input class="name" type="text" name="name1" value="" id="name1">
-                  </td>
-                  <td>
-                    <select class="role" name="role1" id="role1">
-                        <option>protagonist</option>
-                        <option>attractor</option>
-                        <option>client</option>
-                        <option>victim</option>
-                        <option>trickster</option>
-                        <option>antagonist</option>
-                        <option>temper</option>
-                        <option>mentor</option>
-                    </select>
-                  </td>
-                  <td>
-                    <input class="appendBtn" type="button" value="append" id="appendBtn1" onclick="appendRow(this)">
-                  </td>
-              </tr>
+  <div style="width:33vw">
+    <form action="" method="post" style="width:100%;">
+      <img src="{% static "form/narratica_logo.png" %}" style="width:50%;">
+      <br/>
+      {% csrf_token %}
+      {{form1.scenario}}
+      <table  frame="void" style="border:none; width:100%" id="tbl">
+            <tr>
+              <th class="table_hedding">Name of Character</th>
+              <th class="table_hedding">Role</th>
+              <th style="width:30%;"> </th>
+            </tr>
+            <tr>
+              <td>{{form1.characterName}}</td>
+              <td>{{form1.characterRole}}</td>
+              <td><input class="appendBtn" type="button" id="appendBtn" value="append" onclick="appendRow(this)"></td>
+            </tr>
           </table>
-
-          {% endblock %}
-
           <br/>
-          <input class="submitbtn" type="submit" value="analyse">
+          <input id="execute" class="submitbtn" type = "submit" value ="analyze">
       </form>
-      {% if scenario %}
-          {{ scenario }}さん、こんにちは。
-      {% endif %}
-      {% if name1 %}
-          {{ name1 }}さん、こんにちは。
-      {% endif %}
-      {% if role1 %}
-          {{ role1 }}さん、こんにちは。
-      {% endif %}
+    </div>
+    <script>
+      function appendRow(appendBtn) {
+        if(appendBtn.value === "append"){
+          let tbl = document.getElementById("tbl");
+          if (!tbl) return;
 
-  {% endblock %}
+          const rownum = tbl.rows.length;
+          const newrow = tbl.insertRow(rownum);
+
+          //append columns
+          const chara_name = newrow.insertCell(0);
+          chara_name.innerHTML = '{{form1.characterName}}';
+          chara_name.firstElementChild.setAttribute("id", "characterName"+rownum)
+          chara_name.firstElementChild.setAttribute("name", "characterName"+rownum)
+
+          const roleSelector = newrow.insertCell(1);
+          roleSelector.innerHTML = '{{form1.characterRole}}';
+          roleSelector.firstElementChild.setAttribute("id", "characterRole"+rownum)
+          roleSelector.firstElementChild.setAttribute("name", "characterRole"+rownum)
+
+          const addBtn = newrow.insertCell(2);
+          addBtn.innerHTML = '<input class="appendBtn" type="button" value="append" onclick="appendRow(this)" id="appendBtn' + rownum +'" name="appendBtn' + rownum +'">';
+
+          //set focus into the recent appended input
+          const addedInput = document.getElementById("name" + rownum);
+          if (addedInput)
+            addedInput.focus();
+            appendBtn.value = "delete";
+          }
+          else{
+            deleteRow(appendBtn)
+            appendBtn.value = "append";
+          }
+      }
+
+      function deleteRow(delbtn){
+
+        if (!delbtn) return;
+
+        let tbl = document.getElementById("tbl");
+
+        const delrow = delbtn.parentNode.parentNode;
+        tbl.deleteRow(delrow.sectionRowIndex);
+
+        // reidentify
+        for (let i = 1; i < tbl.rows.length; i++) {
+          for (let j = 0; j < tbl.rows[1].cells.length; j++) {
+            let cell = tbl.rows[i].cells[j].firstElementChild;
+            let cellclass = cell.className;
+            cell.setAttribute("id", cellclass + i);
+            cell.setAttribute("name", cellclass + i);
+          }
+        }
+      }
+    </script>
 </body>
 </html>
+{% endspaceless %}

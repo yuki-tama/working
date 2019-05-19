@@ -9,10 +9,10 @@ function appendRow(appendBtn) {
 
 		//append columns
 		const chara_name = newrow.insertCell(0);
-		chara_name.innerHTML = '<input class="name" type="text" id="name' + rownum +'" name="name' + rownum +'" value="">';
+		chara_name.innerHTML = '{{form1.characterName}}';
 
 		const roleSelector = newrow.insertCell(1);
-		roleSelector.innerHTML = '<select class="role" name="role' + rownum +'" id="role' + rownum +'"> <option>protagonist</option> <option>attractor</option> <option>client</option> <option>victim</option> <option>trickster</option> <option>antagonist</option> <option>temper</option> <option>mentor</option> </select>';
+		roleSelector.innerHTML = '{% spaceless %}{{form1.characterRole}}{% endspaceless %}';
 
 		const addBtn = newrow.insertCell(2);
 		addBtn.innerHTML = '<input class="appendBtn" type="button" value="append" onclick="appendRow(this)" id="appendBtn' + rownum +'" name="appendBtn' + rownum +'">';
