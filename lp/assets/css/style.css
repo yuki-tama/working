@@ -277,6 +277,11 @@ a {
   cursor: pointer;
   transform: translateY(-50%);
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation; /* タップ時の遅延をなくす */
+}
+
+.slider__arrow {
+  transition: opacity 0.15s;
 }
 
 .slider__arrow:disabled {
@@ -315,6 +320,8 @@ a {
   border-radius: 50%;
   background: rgba(122, 82, 48, 0.25);
   cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 0.15s;
 }
 
 .slider__dot.is-active {

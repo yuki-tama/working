@@ -54,35 +54,71 @@
       next.disabled = index === slides.length - 1;
     }
 
+    // 矢印・ドットで移動中の行き先。到着するまではスクロール位置で表示を上書きしない
+    var target = null;
+    var targetTimer;
+
+    function nearestIndex() {
+      var center = track.scrollLeft + track.clientWidth / 2;
+      var nearest = 0;
+      var best = Infinity;
+      slides.forEach(function (s, i) {
+        var dist = Math.abs(s.offsetLeft + s.clientWidth / 2 - center);
+        if (dist < best) {
+          best = dist;
+          nearest = i;
+        }
+      });
+      return nearest;
+    }
+
     function goTo(index) {
       index = Math.max(0, Math.min(slides.length - 1, index));
       var slide = slides[index];
+      target = index;
+      clearTimeout(targetTimer);
+      // scrollend 非対応ブラウザ向けの保険
+      targetTimer = setTimeout(function () {
+        target = null;
+      }, 700);
       track.scrollTo({
         left: slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2,
         behavior: "smooth",
       });
-      render(index);
+      render(index); // 押した瞬間に矢印・ドットを切り替える
     }
 
-    // スワイプ（ネイティブスクロール + scroll-snap）後に現在位置を同期
-    var timer;
+    // スワイプ中も 1 フレームごとに現在位置を同期（止まるのを待たない）
+    var ticking = false;
     track.addEventListener(
       "scroll",
       function () {
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-          var center = track.scrollLeft + track.clientWidth / 2;
-          var nearest = 0;
-          var best = Infinity;
-          slides.forEach(function (s, i) {
-            var dist = Math.abs(s.offsetLeft + s.clientWidth / 2 - center);
-            if (dist < best) {
-              best = dist;
-              nearest = i;
-            }
-          });
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          ticking = false;
+          var nearest = nearestIndex();
+          if (target !== null) {
+            if (nearest !== target) return;
+            target = null;
+          }
           if (nearest !== current) render(nearest);
-        }, 80);
+        });
+      },
+      { passive: true }
+    );
+
+    track.addEventListener("scrollend", function () {
+      target = null;
+      var nearest = nearestIndex();
+      if (nearest !== current) render(nearest);
+    });
+
+    // 指で触ったらユーザー操作を優先
+    track.addEventListener(
+      "touchstart",
+      function () {
+        target = null;
       },
       { passive: true }
     );
