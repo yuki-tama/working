@@ -21,9 +21,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+  <!-- Web フォントは描画をブロックしないよう非同期で読み込む（届くまではシステムフォントで表示） -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="preload" as="image" href="assets/img/kv.webp">
+  <link rel="preload" as="image" href="assets/img/kv.webp" fetchpriority="high">
 
   <!-- OS 判定: 描画前に判定してボタンのちらつきを防ぐ。判定不可（PC 等）は両方表示 -->
   <script>
@@ -45,7 +47,7 @@
       <header class="kv" id="s01">
         <img class="kv__image" src="assets/img/kv.webp" width="750" height="900" alt="サンプルパズル（仮）のキャラクターたちとパズル画面のイメージ" fetchpriority="high">
         <h1 class="kv__logo">
-          <img src="assets/img/logo.webp" width="600" height="220" alt="サンプルパズル 〜ことりの森〜（仮）">
+          <img src="assets/img/logo.webp" width="600" height="220" alt="サンプルパズル 〜ことりの森〜（仮）" decoding="async">
         </h1>
       </header>
 
@@ -54,10 +56,10 @@
         <p class="cta__lead">いますぐ事前登録！</p>
         <div class="store-buttons">
           <a class="store-button store-button--ios" data-href="store.ios" href="#">
-            <img src="assets/img/badge_appstore.webp" width="360" height="108" alt="App Store で事前登録">
+            <img src="assets/img/badge_appstore.webp" width="360" height="108" alt="App Store で事前登録" decoding="async">
           </a>
           <a class="store-button store-button--android" data-href="store.android" href="#">
-            <img src="assets/img/badge_googleplay.webp" width="360" height="108" alt="Google Play で事前登録">
+            <img src="assets/img/badge_googleplay.webp" width="360" height="108" alt="Google Play で事前登録" decoding="async">
           </a>
         </div>
       </section>
@@ -65,23 +67,23 @@
       <!-- S03 報酬 -->
       <section class="section reward" id="s03">
         <h2 class="section__heading">
-          <img src="assets/img/h_reward.webp" width="640" height="110" alt="事前登録報酬" loading="lazy">
+          <img src="assets/img/h_reward.webp" width="640" height="110" alt="事前登録報酬" loading="lazy" decoding="async">
         </h2>
         <ol class="reward__list">
           <li class="reward-card">
             <p class="reward-card__count">事前登録 <strong>3万人</strong> 達成で</p>
             <p class="reward-card__name">ふわふわクッション（仮）</p>
-            <img class="reward-card__image" src="assets/img/reward_1.webp" width="400" height="300" alt="" loading="lazy">
+            <img class="reward-card__image" src="assets/img/reward_1.webp" width="400" height="300" alt="" loading="lazy" decoding="async">
           </li>
           <li class="reward-card">
             <p class="reward-card__count">事前登録 <strong>5万人</strong> 達成で</p>
             <p class="reward-card__name">コイン ×3,000（仮）</p>
-            <img class="reward-card__image" src="assets/img/reward_2.webp" width="400" height="300" alt="" loading="lazy">
+            <img class="reward-card__image" src="assets/img/reward_2.webp" width="400" height="300" alt="" loading="lazy" decoding="async">
           </li>
           <li class="reward-card">
             <p class="reward-card__count">事前登録 <strong>8万人</strong> 達成で</p>
             <p class="reward-card__name">限定きせかえ「もりのエプロン」（仮）</p>
-            <img class="reward-card__image" src="assets/img/reward_3.webp" width="400" height="300" alt="" loading="lazy">
+            <img class="reward-card__image" src="assets/img/reward_3.webp" width="400" height="300" alt="" loading="lazy" decoding="async">
           </li>
         </ol>
         <p class="reward__note">
@@ -93,25 +95,25 @@
       <!-- S04 ゲーム紹介 -->
       <section class="section game" id="s04">
         <h2 class="section__heading">
-          <img src="assets/img/h_game.webp" width="640" height="110" alt="ゲーム紹介" loading="lazy">
+          <img src="assets/img/h_game.webp" width="640" height="110" alt="ゲーム紹介" loading="lazy" decoding="async">
         </h2>
         <div class="slider slider--screens" data-slider aria-label="ゲーム画面" aria-roledescription="carousel">
           <button class="slider__arrow slider__arrow--prev" type="button" aria-label="前のゲーム画面">
-            <img src="assets/img/arrow_left.webp" width="96" height="96" alt="" loading="lazy">
+            <img src="assets/img/arrow_left.webp" width="96" height="96" alt="" loading="lazy" decoding="async">
           </button>
           <ul class="slider__track">
             <li class="slider__slide">
-              <img class="screen" src="assets/img/ss_1.webp" width="540" height="960" alt="ゲーム画面1: 同じ色のブロックを3つそろえて消すパズル" loading="lazy">
+              <img class="screen" src="assets/img/ss_1.webp" width="540" height="960" alt="ゲーム画面1: 同じ色のブロックを3つそろえて消すパズル" loading="lazy" decoding="async">
             </li>
             <li class="slider__slide">
-              <img class="screen" src="assets/img/ss_2.webp" width="540" height="960" alt="ゲーム画面2: 家具を置いておへやをかざる画面" loading="lazy">
+              <img class="screen" src="assets/img/ss_2.webp" width="540" height="960" alt="ゲーム画面2: 家具を置いておへやをかざる画面" loading="lazy" decoding="async">
             </li>
             <li class="slider__slide">
-              <img class="screen" src="assets/img/ss_3.webp" width="540" height="960" alt="ゲーム画面3: なかまのキャラクター一覧" loading="lazy">
+              <img class="screen" src="assets/img/ss_3.webp" width="540" height="960" alt="ゲーム画面3: なかまのキャラクター一覧" loading="lazy" decoding="async">
             </li>
           </ul>
           <button class="slider__arrow slider__arrow--next" type="button" aria-label="次のゲーム画面">
-            <img src="assets/img/arrow_right.webp" width="96" height="96" alt="" loading="lazy">
+            <img src="assets/img/arrow_right.webp" width="96" height="96" alt="" loading="lazy" decoding="async">
           </button>
           <div class="slider__dots"></div>
         </div>
@@ -120,44 +122,44 @@
       <!-- S05 キャラ紹介 -->
       <section class="section chara" id="s05">
         <h2 class="section__heading">
-          <img src="assets/img/h_chara.webp" width="640" height="110" alt="キャラクター紹介" loading="lazy">
+          <img src="assets/img/h_chara.webp" width="640" height="110" alt="キャラクター紹介" loading="lazy" decoding="async">
         </h2>
         <div class="slider slider--chara" data-slider aria-label="キャラクター" aria-roledescription="carousel">
           <button class="slider__arrow slider__arrow--prev" type="button" aria-label="前のキャラクター">
-            <img src="assets/img/arrow_left.webp" width="96" height="96" alt="" loading="lazy">
+            <img src="assets/img/arrow_left.webp" width="96" height="96" alt="" loading="lazy" decoding="async">
           </button>
           <ul class="slider__track">
             <li class="slider__slide">
               <article class="chara-card">
                 <h3 class="chara-card__name">ポコ（仮）</h3>
-                <img class="chara-card__image" src="assets/img/chara_1.webp" width="400" height="400" alt="" loading="lazy">
+                <img class="chara-card__image" src="assets/img/chara_1.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
                 <p class="chara-card__text">森のはずれに住むのんびり屋。おひるねと木の実のパンケーキが大好き。</p>
               </article>
             </li>
             <li class="slider__slide">
               <article class="chara-card">
                 <h3 class="chara-card__name">ミルク（仮）</h3>
-                <img class="chara-card__image" src="assets/img/chara_2.webp" width="400" height="400" alt="" loading="lazy">
+                <img class="chara-card__image" src="assets/img/chara_2.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
                 <p class="chara-card__text">きれい好きなしっかり者。おへやのもようがえを考えるのが得意。</p>
               </article>
             </li>
             <li class="slider__slide">
               <article class="chara-card">
                 <h3 class="chara-card__name">モカ（仮）</h3>
-                <img class="chara-card__image" src="assets/img/chara_3.webp" width="400" height="400" alt="" loading="lazy">
+                <img class="chara-card__image" src="assets/img/chara_3.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
                 <p class="chara-card__text">元気いっぱいの食いしんぼう。ちょこちょこ走り回ってブロックを集める。</p>
               </article>
             </li>
             <li class="slider__slide">
               <article class="chara-card">
                 <h3 class="chara-card__name">ソラ（仮）</h3>
-                <img class="chara-card__image" src="assets/img/chara_4.webp" width="400" height="400" alt="" loading="lazy">
+                <img class="chara-card__image" src="assets/img/chara_4.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
                 <p class="chara-card__text">空をながめるのが好きな物知り。みんなにパズルのコツを教えてくれる。</p>
               </article>
             </li>
           </ul>
           <button class="slider__arrow slider__arrow--next" type="button" aria-label="次のキャラクター">
-            <img src="assets/img/arrow_right.webp" width="96" height="96" alt="" loading="lazy">
+            <img src="assets/img/arrow_right.webp" width="96" height="96" alt="" loading="lazy" decoding="async">
           </button>
           <div class="slider__dots"></div>
         </div>
@@ -166,7 +168,7 @@
       <!-- S06 SNS -->
       <section class="section sns" id="s06">
         <h2 class="section__heading">
-          <img src="assets/img/h_sns.webp" width="640" height="110" alt="公式SNSをチェックしてね" loading="lazy">
+          <img src="assets/img/h_sns.webp" width="640" height="110" alt="公式SNSをチェックしてね" loading="lazy" decoding="async">
         </h2>
         <a class="sns__button" data-href="sns.x" href="#">
           <span class="sns__icon" aria-hidden="true">𝕏</span>
@@ -192,10 +194,10 @@
       <p class="cta__lead">いますぐ事前登録！</p>
       <div class="store-buttons">
         <a class="store-button store-button--ios" data-href="store.ios" href="#">
-          <img src="assets/img/badge_appstore.webp" width="360" height="108" alt="App Store で事前登録" loading="lazy">
+          <img src="assets/img/badge_appstore.webp" width="360" height="108" alt="App Store で事前登録" loading="lazy" decoding="async">
         </a>
         <a class="store-button store-button--android" data-href="store.android" href="#">
-          <img src="assets/img/badge_googleplay.webp" width="360" height="108" alt="Google Play で事前登録" loading="lazy">
+          <img src="assets/img/badge_googleplay.webp" width="360" height="108" alt="Google Play で事前登録" loading="lazy" decoding="async">
         </a>
       </div>
     </div>
