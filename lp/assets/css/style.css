@@ -1,0 +1,397 @@
+/* ==========================================================================
+   事前登録 LP サンプル
+   - SP 優先（375px 基準）。ブレークポイントなし
+   - 480px までは流体、超えたら幅固定で中央寄せ。背景は全幅
+   ========================================================================== */
+
+:root {
+  --page-max: 480px;
+  --bar-h: 96px; /* C01 の高さ（S02 と共通のボタン構成） */
+
+  --c-bg-outer: #f6e3b4;
+  --c-bg: #fff6dc;
+  --c-bg-dark: #fae6b4;
+  --c-text: #5a3c22;
+  --c-brown: #7a5230;
+  --c-teal: #3e9ba8;
+  --c-orange: #f2a93b;
+  --c-white: #fff;
+
+  --font-body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Meiryo", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--c-text);
+  /* 全幅背景（PC で左右に見える部分） */
+  background-color: var(--c-bg-outer);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.6) 2px, transparent 2px);
+  background-size: 22px 22px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- ページ枠 ---------- */
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  background: var(--c-bg);
+  box-shadow: 0 0 24px rgba(122, 82, 48, 0.15);
+}
+
+/* ---------- S01 KV ---------- */
+.kv {
+  position: relative;
+}
+
+.kv__logo {
+  position: absolute;
+  left: 50%;
+  top: 3%;
+  width: 78%;
+  transform: translateX(-50%);
+}
+
+/* ---------- S02 / C01 共通 CTA ---------- */
+.cta {
+  padding: 16px 16px 20px;
+  background: var(--c-teal);
+  text-align: center;
+}
+
+.cta__lead {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-white);
+  letter-spacing: 0.08em;
+}
+
+.store-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.store-button {
+  display: block;
+  width: min(48%, 180px);
+  transition: transform 0.15s;
+}
+
+.store-button:active {
+  transform: scale(0.96);
+}
+
+/* OS 判定: iOS / Android は 1 つだけ表示。判定不可（PC 等）は両方表示 */
+[data-os="ios"] .store-button--android,
+[data-os="android"] .store-button--ios {
+  display: none;
+}
+
+[data-os="ios"] .store-button,
+[data-os="android"] .store-button {
+  width: min(60%, 220px);
+}
+
+/* ---------- C01 追従 CTA バー ---------- */
+.follow-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  pointer-events: none;
+  transform: translateY(100%);
+  visibility: hidden;
+  transition: transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.follow-bar.is-visible {
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+  transition: transform 0.3s ease, visibility 0s;
+}
+
+.follow-bar__inner {
+  max-width: var(--page-max);
+  min-height: var(--bar-h);
+  margin: 0 auto;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: var(--c-teal);
+  text-align: center;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- セクション共通 ---------- */
+.section {
+  padding: 36px 16px 40px;
+}
+
+.section:nth-of-type(even) {
+  background: var(--c-bg-dark);
+}
+
+.section__heading {
+  width: 88%;
+  margin: 0 auto 20px;
+}
+
+/* ---------- S03 報酬 ---------- */
+.reward__list {
+  display: grid;
+  gap: 16px;
+}
+
+.reward-card {
+  padding: 16px 16px 8px;
+  border: 3px solid var(--c-brown);
+  border-radius: 20px;
+  background: var(--c-white);
+  text-align: center;
+}
+
+.reward-card__count {
+  display: inline-block;
+  padding: 2px 16px;
+  border-radius: 999px;
+  background: var(--c-orange);
+  color: var(--c-white);
+  font-weight: 700;
+}
+
+.reward-card__count strong {
+  font-size: 1.3em;
+}
+
+.reward-card__name {
+  margin-top: 8px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.reward-card__image {
+  width: 62%;
+  margin: 4px auto 0;
+}
+
+.reward__note {
+  margin-top: 14px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ---------- スライダー共通（S04 / S05） ---------- */
+.slider {
+  position: relative;
+}
+
+.slider__track {
+  position: relative; /* offsetLeft の基準 */
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  /* 左右に前後スライドを少し見せる */
+  padding: 4px 12% 8px;
+  margin: 0 -16px;
+}
+
+.slider__track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider__slide {
+  flex: 0 0 76%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.slider__arrow {
+  position: absolute;
+  top: 45%;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slider__arrow--prev {
+  left: -6px;
+}
+
+.slider__arrow--next {
+  right: -6px;
+}
+
+.slider__arrow:focus-visible,
+.slider__dot:focus-visible {
+  outline: 3px solid var(--c-orange);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.slider__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(122, 82, 48, 0.25);
+  cursor: pointer;
+}
+
+.slider__dot.is-active {
+  background: var(--c-brown);
+}
+
+/* S04 スクショ */
+.screen {
+  border: 4px solid var(--c-brown);
+  border-radius: 20px;
+  background: var(--c-white);
+}
+
+/* S05 キャラカード */
+.chara-card {
+  height: 100%;
+  padding: 18px 16px 20px;
+  border: 3px solid var(--c-brown);
+  border-radius: 20px;
+  background: var(--c-white);
+  text-align: center;
+}
+
+.chara-card__name {
+  display: inline-block;
+  min-width: 60%;
+  padding: 2px 16px;
+  border-radius: 999px;
+  background: var(--c-orange);
+  color: var(--c-white);
+  font-size: 16px;
+}
+
+.chara-card__image {
+  width: 64%;
+  margin: 14px auto;
+  border-radius: 50%;
+}
+
+.chara-card__text {
+  font-size: 13px;
+  text-align: left;
+}
+
+/* ---------- S06 SNS ---------- */
+.sns {
+  text-align: center;
+}
+
+.sns__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: min(80%, 300px);
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: #111;
+  color: var(--c-white);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 0 var(--c-brown);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.sns__button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.sns__icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ---------- S07 フッター ---------- */
+.footer {
+  padding: 24px 16px;
+  /* 状態C: フッター到達時も C01 にフッターが隠れないよう、末尾にバー分の余白 */
+  padding-bottom: calc(24px + var(--bar-h) + env(safe-area-inset-bottom));
+  background: var(--c-brown);
+  color: var(--c-white);
+  text-align: center;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 16px;
+  font-size: 12px;
+}
+
+.footer__copy {
+  margin-top: 12px;
+  font-size: 10px;
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .follow-bar,
+  .follow-bar.is-visible {
+    transition: none;
+  }
+}
