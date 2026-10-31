@@ -6,7 +6,7 @@
 
 :root {
   --page-max: 480px;
-  --bar-h: 96px; /* C01 の高さ（S02 と共通のボタン構成） */
+  --bar-h: 72px; /* C01 の高さ */
 
   --c-bg-outer: #f6e3b4;
   --c-bg: #fff6dc;
@@ -141,13 +141,37 @@ a {
 }
 
 .follow-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   max-width: var(--page-max);
-  min-height: var(--bar-h);
+  min-height: calc(var(--bar-h) + env(safe-area-inset-bottom));
   margin: 0 auto;
-  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
   background: var(--c-teal);
-  text-align: center;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* バーは高さを抑えるため、リード文とボタンを横並びにする */
+.follow-bar .cta__lead {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.follow-bar .store-buttons {
+  gap: 8px;
+}
+
+.follow-bar .store-button {
+  width: 140px;
+}
+
+[data-os="ios"] .follow-bar .store-button,
+[data-os="android"] .follow-bar .store-button {
+  width: 160px;
 }
 
 /* ---------- セクション共通 ---------- */
