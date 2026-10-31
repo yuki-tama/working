@@ -24,6 +24,8 @@
     var slides = Array.prototype.slice.call(track.children);
     var dotsWrap = slider.querySelector(".slider__dots");
     var label = slider.getAttribute("aria-label") || "";
+    var prev = slider.querySelector(".slider__arrow--prev");
+    var next = slider.querySelector(".slider__arrow--next");
     var current = 0;
 
     var dots = slides.map(function (_, i) {
@@ -47,11 +49,13 @@
       slides.forEach(function (s, i) {
         s.setAttribute("aria-hidden", i === index ? "false" : "true");
       });
+      // 端ではそれ以上送れないので、矢印を半透明にして押せなくする
+      prev.disabled = index === 0;
+      next.disabled = index === slides.length - 1;
     }
 
     function goTo(index) {
-      var n = slides.length;
-      index = (index + n) % n; // 端ではループ
+      index = Math.max(0, Math.min(slides.length - 1, index));
       var slide = slides[index];
       track.scrollTo({
         left: slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2,
@@ -83,10 +87,10 @@
       { passive: true }
     );
 
-    slider.querySelector(".slider__arrow--prev").addEventListener("click", function () {
+    prev.addEventListener("click", function () {
       goTo(current - 1);
     });
-    slider.querySelector(".slider__arrow--next").addEventListener("click", function () {
+    next.addEventListener("click", function () {
       goTo(current + 1);
     });
 

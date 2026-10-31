@@ -162,16 +162,21 @@ a {
 }
 
 .follow-bar .store-buttons {
+  flex: 0 1 auto;
+  min-width: 0;
   gap: 8px;
 }
 
+/* 狭い画面でボタンが 2 つ並ぶ場合（PC 等の判定不可）は、はみ出さないよう縮める */
 .follow-bar .store-button {
-  width: 140px;
+  flex: 0 1 140px;
+  min-width: 0;
+  width: auto;
 }
 
 [data-os="ios"] .follow-bar .store-button,
 [data-os="android"] .follow-bar .store-button {
-  width: 160px;
+  flex-basis: 160px;
 }
 
 /* ---------- セクション共通 ---------- */
@@ -272,6 +277,12 @@ a {
   cursor: pointer;
   transform: translateY(-50%);
   -webkit-tap-highlight-color: transparent;
+}
+
+.slider__arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
 }
 
 .slider__arrow--prev {

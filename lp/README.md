@@ -29,7 +29,7 @@ python3 -m http.server 8000
 | --- | --- |
 | S02 / C01 OS 判定（7 章） | `<head>` のインラインスクリプトで `html[data-os]` を設定し、CSS で出し分け。iOS / Android は 1 つ、判定不可（PC 等）は両方表示 |
 | C01 追従バー（5 章） | ご指示により**初期表示から常時表示**（仕様書の状態A「初期は非表示」から変更）。フッターにバー分 + `env(safe-area-inset-bottom)` の余白 |
-| スライダー（6 章） | `scroll-snap` によるネイティブスワイプ + 左右矢印 + ドット。矢印は端でループ |
+| スライダー（6 章） | `scroll-snap` によるネイティブスワイプ + 左右矢印 + ドット。端では矢印を半透明にして押せなくする（ループしない） |
 | 画像見出し（7 章） | `h2` の中に `img` を置き、`alt` を設定 |
 | 画像（7 章） | WebP。KV 以外は `loading="lazy"`。全画像で `width` / `height` を指定（CLS 対策） |
 | 外部リンク（7 章） | `config.js` の URL を反映し、`target="_blank" rel="noopener noreferrer"` を付与 |
