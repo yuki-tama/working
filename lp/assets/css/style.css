@@ -341,13 +341,11 @@ a {
   color: var(--c-white);
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 4px 0 var(--c-brown);
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform 0.15s;
 }
 
 .sns__button:active {
-  transform: translateY(4px);
-  box-shadow: none;
+  transform: scale(0.96);
 }
 
 .sns__icon {
