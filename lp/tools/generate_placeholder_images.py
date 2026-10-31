@@ -61,9 +61,9 @@ def draw_critter(d, cx, cy, r, color, ear="round"):
         for sign in (-1, 1):
             d.polygon([s(cx + sign * r * 0.85, cy - r * 0.3), s(cx + sign * r * 0.75, cy - r * 1.05),
                        s(cx + sign * r * 0.2, cy - r * 0.8)], fill=color)
-    elif ear == "long":
-        for dx in (-0.35, 0.35):
-            d.ellipse(s(cx + dx * r - r * 0.2, cy - r * 1.6, cx + dx * r + r * 0.2, cy - r * 0.5), fill=color)
+    elif ear == "small":
+        for dx in (-0.6, 0.6):
+            d.ellipse(s(cx + dx * r - r * 0.22, cy - r * 0.85, cx + dx * r + r * 0.22, cy - r * 0.45), fill=color)
     d.ellipse(s(cx - r, cy - r * 0.85, cx + r, cy + r * 0.95), fill=color)
     d.ellipse(s(cx - r * 0.45, cy + r * 0.05, cx + r * 0.45, cy + r * 0.6), fill=WHITE)
     for dx in (-0.38, 0.38):
@@ -94,7 +94,7 @@ def kv():
     block_grid(d, 110, 600, 7, 3, 64, 12, seed=2)
     draw_critter(d, 250, 420, 110, (214, 160, 110), "round")
     draw_critter(d, 500, 440, 90, WHITE, "cat")
-    draw_critter(d, 375, 520, 70, (250, 210, 120), "long")
+    draw_critter(d, 375, 520, 70, (250, 210, 120), "small")
     center_text(d, 690, 880, "※仮素材", 20, BROWN)
     save(img, "kv.webp", w, h)
 
@@ -110,8 +110,6 @@ def logo():
 def heading(name, text):
     w, h = 640, 110
     img, d = canvas(w, h, (0, 0, 0, 0))
-    d.polygon([s(10, 30), s(70, 30), s(50, 55), s(70, 80), s(10, 80)], fill=TEAL)
-    d.polygon([s(630, 30), s(570, 30), s(590, 55), s(570, 80), s(630, 80)], fill=TEAL)
     d.rounded_rectangle(s(55, 15, 585, 95), radius=40 * SS, fill=BROWN)
     d.rounded_rectangle(s(63, 23, 577, 87), radius=32 * SS, outline=CREAM, width=3 * SS)
     center_text(d, 320, 56, text, 38, WHITE)
@@ -155,7 +153,7 @@ def screenshot(name, idx):
         d.rounded_rectangle(s(330, 300, 460, 420), radius=10 * SS, fill=WHITE, outline=BROWN, width=6 * SS)
         draw_critter(d, 380, 640, 80, WHITE, "cat")
     else:
-        for i, (c, ear) in enumerate([((214, 160, 110), "round"), (WHITE, "cat"), ((250, 210, 120), "long"), (BLUE, "round")]):
+        for i, (c, ear) in enumerate([((214, 160, 110), "round"), (WHITE, "cat"), ((250, 210, 120), "small"), (BLUE, "round")]):
             cx = 150 + (i % 2) * 240
             cy = 360 + (i // 2) * 300
             d.rounded_rectangle(s(cx - 110, cy - 130, cx + 110, cy + 130), radius=30 * SS, fill=WHITE)
@@ -213,7 +211,7 @@ def main():
         reward(f"reward_{i}.webp", k)
     for i in range(3):
         screenshot(f"ss_{i + 1}.webp", i)
-    for i, (c, e) in enumerate([((214, 160, 110), "round"), (WHITE, "cat"), ((250, 210, 120), "long"), (BLUE, "round")], 1):
+    for i, (c, e) in enumerate([((214, 160, 110), "round"), (WHITE, "cat"), ((250, 210, 120), "small"), (BLUE, "round")], 1):
         chara(f"chara_{i}.webp", c, e)
     arrow("arrow_left.webp", "left")
     arrow("arrow_right.webp", "right")

@@ -18,39 +18,6 @@
     a.rel = "noopener noreferrer";
   });
 
-  /* ---------- C01 追従 CTA バー ----------
-   * 状態A: S02 が画面内 → 非表示
-   * 状態B: S02 が画面より上に抜けた → 表示
-   * 状態C: フッター到達時も表示継続（末尾の余白は CSS 側で確保）
-   */
-  var cta = document.getElementById("s02");
-  var bar = document.getElementById("c01");
-
-  function setBarVisible(visible) {
-    bar.classList.toggle("is-visible", visible);
-    bar.setAttribute("aria-hidden", visible ? "false" : "true");
-    bar.querySelectorAll("a").forEach(function (a) {
-      a.tabIndex = visible ? 0 : -1;
-    });
-  }
-
-  if (cta && bar) {
-    setBarVisible(false);
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        var e = entries[0];
-        // 画面下にある（まだ到達していない）間は出さない。上に抜けたら出す。
-        setBarVisible(!e.isIntersecting && e.boundingClientRect.top < 0);
-      }).observe(cta);
-    } else {
-      var onScroll = function () {
-        setBarVisible(cta.getBoundingClientRect().bottom < 0);
-      };
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-    }
-  }
-
   /* ---------- スライダー（S04 / S05）: 左右矢印 + ドット + スワイプ ---------- */
   document.querySelectorAll("[data-slider]").forEach(function (slider) {
     var track = slider.querySelector(".slider__track");

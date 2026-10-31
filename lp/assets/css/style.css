@@ -131,23 +131,13 @@ a {
 }
 
 /* ---------- C01 追従 CTA バー ---------- */
+/* 初期表示から常に画面下部に固定表示 */
 .follow-bar {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 100;
-  pointer-events: none;
-  transform: translateY(100%);
-  visibility: hidden;
-  transition: transform 0.3s ease, visibility 0s linear 0.3s;
-}
-
-.follow-bar.is-visible {
-  pointer-events: auto;
-  transform: translateY(0);
-  visibility: visible;
-  transition: transform 0.3s ease, visibility 0s;
 }
 
 .follow-bar__inner {
@@ -368,7 +358,7 @@ a {
 /* ---------- S07 フッター ---------- */
 .footer {
   padding: 24px 16px;
-  /* 状態C: フッター到達時も C01 にフッターが隠れないよう、末尾にバー分の余白 */
+  /* C01 にフッターが隠れないよう、末尾にバー分の余白 */
   padding-bottom: calc(24px + var(--bar-h) + env(safe-area-inset-bottom));
   background: var(--c-brown);
   color: var(--c-white);
@@ -387,11 +377,4 @@ a {
   margin-top: 12px;
   font-size: 10px;
   opacity: 0.85;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .follow-bar,
-  .follow-bar.is-visible {
-    transition: none;
-  }
 }
